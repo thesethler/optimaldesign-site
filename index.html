@@ -1,0 +1,462 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimal Design VA | Pre-Planning & Spatial Data</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+           OPTIMAL DESIGN VA - EMBEDDED STYLESHEET
+           ========================================================================== */
+        :root {
+            --primary: #1a365d;      /* Deep navy accent */
+            --secondary: #2c5282;    /* Slate blue */
+            --dark: #2d3748;         /* Primary text slate */
+            --light: #f7fafc;        /* Background off-white */
+            --border: #e2e8f0;       /* Structural line dividers */
+            --text-muted: #718096;   /* Labels and body notes */
+            --font-main: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--dark);
+            background-color: #ffffff;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .narrow-container {
+            max-width: 650px;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            color: var(--primary);
+        }
+
+        .tagline {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+
+        .tagline-accent {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            color: #2c7a7b; /* Strategic teal accent */
+            margin-bottom: 12px;
+        }
+
+        .text-center { text-align: center; }
+
+        /* Buttons & Interactions */
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary);
+            color: #ffffff;
+            padding: 14px 28px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+
+        .btn-text {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-text:hover { text-decoration: underline; }
+        .full-width { width: 100%; }
+
+        /* Header Navigation */
+        .site-header {
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .brand-name {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: -0.02em;
+            color: var(--primary);
+        }
+
+        .brand-sub {
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.4em;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-left: 32px;
+            transition: color 0.2s ease;
+        }
+
+        .main-nav a:not(.btn-secondary):hover { color: var(--primary); }
+
+        /* Sections Layout */
+        .hero-section {
+            padding: 100px 0 80px 0;
+        }
+
+        .hero-content { max-width: 850px; }
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 24px;
+        }
+
+        .lead-text {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        .cta-group * { margin-right: 24px; }
+
+        .services-section {
+            padding: 80px 0;
+            background-color: var(--light);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            margin-bottom: 48px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .grid-three-col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            padding: 40px 32px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
+        .card-num {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+            margin-bottom: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .briefing-section { padding: 100px 0; }
+        .grid-two-col {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .briefing-text h2 {
+            font-size: 2.25rem;
+            margin-bottom: 24px;
+        }
+
+        .briefing-text p {
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        /* Image Display Component */
+        .briefing-visual img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .contact-section {
+            padding: 100px 0;
+            background-color: var(--light);
+            border-top: 1px solid var(--border);
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+            margin-bottom: 48px;
+        }
+
+        .lead-form {
+            background: #ffffff;
+            padding: 48px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
+        .form-group { margin-bottom: 24px; }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            color: var(--dark);
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .site-footer {
+            background-color: var(--primary);
+            color: #ffffff;
+            padding: 40px 0;
+            font-size: 0.85rem;
+        }
+
+        .footer-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-footer p { color: #e2e8f0; }
+        .footer-note {
+            max-width: 500px;
+            text-align: right;
+            color: #a0aec0 !important;
+        }
+
+        @media (max-width: 960px) {
+            .grid-three-col, .grid-two-col {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .footer-flex {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .footer-note { text-align: center; }
+            .hero-content h1 { font-size: 2.25rem; }
+            .main-nav a:not(.btn-secondary) { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-flex">
+            <div class="logo">
+                <span class="brand-name">OPTIMAL DESIGN</span>
+                <span class="brand-sub">VA</span>
+            </div>
+            <nav class="main-nav">
+                <a href="#services">Services</a>
+                <a href="#sb531">Virginia SB 531</a>
+                <a href="#contact" class="btn-secondary">Get in Touch</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="container hero-content">
+            <p class="tagline">Spatial Data & Pre-Planning Specialist</p>
+            <h1>Unlocking Hidden Land Value Through High-Precision 3D Diagnostics</h1>
+            <p class="lead-text">We help homeowners, agents, and real estate investors identify development feasibility, navigate complex zoning boundaries, and beat the upcoming 2027 legislative bottleneck—long before hiring an architect.</p>
+            <div class="cta-group">
+                <a href="#contact" class="btn-primary">Request Site Consultation</a>
+                <a href="#services" class="btn-text">Explore Our Services &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2 class="section-title">Technical Capabilities</h2>
+            <div class="grid-three-col">
+                <div class="service-card">
+                    <div class="card-num">01</div>
+                    <h3>Zoning & GIS Diagnostics</h3>
+                    <p>Comprehensive digital analysis of property setbacks, lot coverage thresholds, topographic flow constraints, and local municipality codes.</p>
+                </div>
+                <div class="service-card">
+                    <div class="card-num">02</div>
+                    <h3>3D Spatial Modeling</h3>
+                    <p>High-accuracy architectural "digital twin" massing models to visually evaluate structural scale, privacy impacts, and footprint logic risk-free.</p>
+                </div>
+                <div class="service-card">
+                    <div class="card-num">03</div>
+                    <h3>Pre-Permit Feasibility</h3>
+                    <p>Compiling clean structural data packages optimized for flawless handover to licensed architects and engineering permit desks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sb531" class="briefing-section">
+        <div class="container grid-two-col">
+            <div class="briefing-text">
+                <p class="tagline-accent">Virginia Senate Bill 531</p>
+                <h2>The 2027 Accessory Dwelling Unit (ADU) Shift</h2>
+                <p>On July 1, 2027, Virginia transforms residential real estate by legalizing detached accessory structures by-right statewide. This wipes away historical occupancy restrictions and municipal public hearings.</p>
+                <p>However, local geographic limits still dictate structural margins. Our specialized spatial data reports ensure your lot footprint is calculated, formatted, and positioned to submit on Day One—bypassing the inevitable municipal permit backlogs.</p>
+            </div>
+            <div class="briefing-visual">
+                <img src="Beach-House-Architecture-Delaware-Maryland-Custom-Small.webp" alt="High-accuracy 3D asset modeling and visualization optimization example">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container narrow-container">
+            <h2 class="text-center">Initiate Phase 1 Assessment</h2>
+            <p class="text-center section-subtitle">Provide your parcel details below to analyze your property's spatial boundaries.</p>
+            
+            <form action="https://api.web3forms.com/submit" method="POST" class="lead-form">
+                
+                <input type="hidden" name="access_key" value="8bf288ef-3d6f-4880-8d62-6c16ef7d89ea">
+                <input type="hidden" name="from_name" value="Optimal Design VA Website">
+                <input type="hidden" name="subject" value="New Spatial Data & Pre-Planning Request">
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" name="name" id="name" required autocomplete="name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email" id="email" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="property">Property Address / Parcel ID (Hampton Roads Region)</label>
+                    <input type="text" name="property" id="property" required placeholder="e.g., Virginia Beach, VA">
+                </div>
+                <div class="form-group">
+                    <label for="message">Project Scope / Objective</label>
+                    <textarea name="message" id="message" rows="5" placeholder="Describe your asset optimization goals..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary full-width">Submit Data Request</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container footer-flex">
+            <p>&copy; 2026 Optimal Design VA. All rights reserved.</p>
+            <p class="footer-note">Spatial Data & Pre-Planning Consulting Services. Professional certifications provided through localized structural partners.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
