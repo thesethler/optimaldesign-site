@@ -321,7 +321,7 @@
             </div>
             <nav class="main-nav">
                 <a href="#services">Diagnostics</a>
-                <a href="#impact">Field Reports</a>
+                <a href="#impact">How It Works</a>
                 <a href="#direct-contact">Direct Contact</a>
                 <a href="#contact" class="btn-secondary font-mono">INITIATE REQUEST</a>
             </nav>
@@ -348,7 +348,7 @@
             <div class="data-metric">
                 <div class="data-metric-label">Moderate ADU Impact</div>
                 <div class="data-metric-value">+20-30%</div>
-                <div class="data-metric-sub">Total Property Value</div>
+                <div class="data-metric-sub">Added Property Value</div>
             </div>
             <div class="data-metric" style="border-left: 1px solid #1e293b; padding-left: 40px; border-right: 1px solid #1e293b; padding-right: 40px;">
                 <div class="data-metric-label">Average Value Added</div>
@@ -358,7 +358,7 @@
             <div class="data-metric">
                 <div class="data-metric-label">Asset Liquidity</div>
                 <div class="data-metric-value"><i class="fas fa-bolt text-sky-400" style="font-size: 20px;"></i> 2.5x</div>
-                <div class="data-metric-sub">Faster Resale Velocity</div>
+                <div class="data-metric-sub">Faster Resale</div>
             </div>
         </div>
     </div>
@@ -404,7 +404,107 @@
             </div>
         </div>
     </section>
-    
+    <section id="process" class="process-section">
+        <style>
+            .process-section {
+                padding: 90px 0;
+                background-color: #ffffff;
+                border-top: 1px solid var(--border-color);
+                border-bottom: 1px solid var(--border-color);
+            }
+            .process-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+                margin-top: 50px;
+                position: relative;
+            }
+            .process-card {
+                background-color: var(--brand-primary);
+                border: 1px solid #1e293b;
+                border-radius: 12px;
+                padding: 36px 28px;
+                position: relative;
+                color: #ffffff;
+                box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+                transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+                display: flex;
+                flex-direction: column;
+            }
+            .process-card:hover {
+                transform: translateY(-5px);
+                border-color: var(--brand-accent);
+                box-shadow: 0 20px 35px rgba(14, 165, 233, 0.15);
+            }
+            .step-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 11px;
+                font-weight: 800;
+                color: var(--brand-accent);
+                background-color: rgba(14, 165, 233, 0.1);
+                border: 1px solid rgba(14, 165, 233, 0.25);
+                padding: 4px 12px;
+                border-radius: 100px;
+                width: fit-content;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+            .process-icon {
+                font-size: 28px;
+                color: #ffffff;
+                margin-bottom: 16px;
+            }
+            .process-card h3 {
+                font-size: 20px;
+                font-weight: 800;
+                color: #ffffff;
+                margin-bottom: 12px;
+                letter-spacing: -0.3px;
+            }
+            .process-card p {
+                font-size: 14px;
+                color: #cbd5e1;
+                line-height: 1.65;
+            }
+            @media (max-width: 768px) {
+                .process-grid {
+                    grid-template-columns: 1fr;
+                    gap: 24px;
+                }
+            }
+        </style>
+
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle-center">A streamlined 3-step feasibility process designed to give you clarity and confidence before spending thousands on architectural drawings or permits.</p>
+
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="step-badge font-mono">Step 01</div>
+                    <div class="process-icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <h3>GIS Parcel Audit</h3>
+                    <p>We access official municipal parcel maps, setback buffers, flood zones, and easement boundaries for your specific address.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="step-badge font-mono">Step 02</div>
+                    <div class="process-icon"><i class="fas fa-cubes"></i></div>
+                    <h3>3D Footprint &amp; Spatial Modeling</h3>
+                    <p>We identify and map your allowable building envelope to verify total lot coverage and structure placement before design begins.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="step-badge font-mono">Step 03</div>
+                    <div class="process-icon"><i class="fas fa-file-contract"></i></div>
+                    <h3>Feasibility Report</h3>
+                    <p>Receive a clean data package and site diagnostic report ready to hand off directly to our preferred service provider or your own licensed architect or engineer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="contact" class="contact-section">
         <div class="container narrow-container">
             <h2 class="text-center">Start a Property Assessment</h2>
